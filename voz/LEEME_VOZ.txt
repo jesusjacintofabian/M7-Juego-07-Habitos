@@ -1,0 +1,88 @@
+==============================================================
+  GRABACIONES DE VOZ - M7
+==============================================================
+
+Pon tus grabaciones en ESTA carpeta (voz) con estos nombres
+exactos. Formatos aceptados: .ogg, .wav o .mp3
+(por ejemplo: como_jugar_1.mp3 o mision_3.wav).
+
+Si falta algún archivo, el juego sigue funcionando: esa parte
+simplemente no tendrá voz. No hace falta cambiar el código.
+
+--------------------------------------------------------------
+A) CÓMO JUGAR (6 audios)
+   Suenan solos al entrar a cada página. También se pueden
+   repetir con el botón del altavoz o la tecla R.
+--------------------------------------------------------------
+
+como_jugar_1  ->  El objetivo
+  "Eres el líder de un equipo universitario que debe terminar un
+   proyecto. Supera siete misiones, una por cada hábito de Stephen
+   Covey, tomando las decisiones más efectivas para tu equipo."
+
+como_jugar_2  ->  Las misiones
+  "En cada misión lees una situación y eliges una de cuatro
+   decisiones: con el ratón, con las flechas y ENTER, o con las
+   teclas del uno al cuatro. Cada decisión cambia tu liderazgo,
+   comunicación, empatía y productividad, y después verás la
+   lección del hábito."
+
+como_jugar_3  ->  El reloj de arena
+  "En las dificultades Líder y Líder Experto tienes un tiempo
+   límite. El reloj empieza cuando terminas de leer y, en los
+   últimos cinco segundos, escucharás un tic-tac. Si se acaba el
+   tiempo, el equipo pierde productividad."
+
+como_jugar_4  ->  Cartas de evento
+  "Después de cada misión volteas una carta al azar: bonificación,
+   penalización o Reto Relámpago. En el reto eliges cuánto
+   arriesgar antes de ver la pregunta: fácil, medio o difícil."
+
+como_jugar_5  ->  Puntos, rachas e insignias
+  "Las decisiones efectivas seguidas forman una racha con bono de
+   puntos. Cada cien puntos subes de nivel y hay diez insignias por
+   descubrir."
+
+como_jugar_6  ->  Cómo se gana
+  "Cumples la misión si terminas con doscientos cincuenta puntos o
+   más y un promedio de habilidades de sesenta o más. En
+   multijugador gana quien tenga más puntos, y si hay empate se
+   define con una muerte súbita."
+
+--------------------------------------------------------------
+B) MAPA DE MISIONES (7 audios)
+   Suenan al pasar el cursor sobre cada misión.
+--------------------------------------------------------------
+
+mision_1  ->  "Misión uno: Ser proactivo. Tomar la iniciativa en
+               lugar de esperar a que otros decidan por ti."
+mision_2  ->  "Misión dos: Comenzar con un fin en mente. Tener claro
+               el objetivo antes de avanzar."
+mision_3  ->  "Misión tres: Poner primero lo primero. Priorizar lo
+               importante sobre lo urgente o lo fácil."
+mision_4  ->  "Misión cuatro: Pensar ganar/ganar. Buscar acuerdos
+               donde todos se beneficien."
+mision_5  ->  "Misión cinco: Buscar primero entender. Escuchar con
+               empatía antes de responder."
+mision_6  ->  "Misión seis: Sinergizar. Combinar las fortalezas de
+               todos para lograr más."
+mision_7  ->  "Misión siete: Afilar la sierra. Renovarse para rendir
+               a largo plazo."
+
+Los textos son una sugerencia: puedes decirlos con tus palabras.
+
+--------------------------------------------------------------
+CONSEJOS PARA GRABAR
+--------------------------------------------------------------
+  - En Ubuntu puedes usar la aplicación "Grabadora de sonido"
+    (sudo apt install gnome-sound-recorder) o Audacity
+    (sudo apt install audacity), que permite exportar a .ogg,
+    .wav o .mp3 y recortar silencios.
+  - Graba en un lugar silencioso, a un palmo del micrófono.
+  - Cada audio debería durar entre 8 y 20 segundos.
+  - Si grabaste en el celular (.m4a, .aac u .opus), conviértelo
+    a .ogg con ffmpeg:
+        sudo apt install ffmpeg
+        ffmpeg -i grabacion.m4a como_jugar_1.ogg
+  - Mientras suena tu voz, la música de fondo baja de volumen
+    automáticamente y vuelve a subir cuando terminas.

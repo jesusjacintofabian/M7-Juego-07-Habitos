@@ -1,0 +1,164 @@
+==============================================================
+  M7: EL DESAFÍO DEL EQUIPO  -  Versión 4.0
+  Guía de instalación y uso en Ubuntu 26.04 LTS
+  Autor: Jesús Jacinto Fabián  ·  Sistemas Colaborativos (UTP)
+==============================================================
+
+--------------------------------------------------------------
+1. QUÉ NECESITAS
+--------------------------------------------------------------
+  - Ubuntu 26.04 LTS (ya trae Python 3 instalado).
+  - La librería Pygame (se instala en el paso 3).
+  - Conexión a Internet solo para instalar Pygame la primera vez.
+
+  Tu laptop (Intel Core Ultra 7 155U, 30 GB de RAM) supera de
+  sobra lo necesario: el juego usa muy poca memoria y procesador.
+
+--------------------------------------------------------------
+2. DESCOMPRIMIR EL JUEGO
+--------------------------------------------------------------
+  1) Copia el archivo M7.zip a tu carpeta personal.
+  2) Clic derecho sobre el archivo > "Extraer aquí".
+     Se crea la carpeta "M7".
+
+  O desde la terminal:
+      cd ~
+      unzip M7.zip
+
+--------------------------------------------------------------
+3. INSTALACIÓN (solo la primera vez)
+--------------------------------------------------------------
+  OPCIÓN A - Automática (recomendada)
+  Abre una terminal (Ctrl + Alt + T) y escribe:
+
+      cd ~/M7
+      ./instalar.sh
+
+  El script instala Pygame (te pedirá tu contraseña) y crea un
+  acceso directo llamado "M7" en el menú de aplicaciones.
+
+  OPCIÓN B - Manual con apt
+      sudo apt update
+      sudo apt install python3-pygame
+
+  OPCIÓN C - Si la opción A o B falla (entorno virtual con pip)
+  Ubuntu no permite instalar con "pip" directamente en el sistema,
+  por eso se usa un entorno virtual dentro de la carpeta del juego:
+
+      sudo apt install python3-venv python3-pip
+      cd ~/M7
+      python3 -m venv venv
+      source venv/bin/activate
+      pip install pygame
+
+  Con esta opción, cada vez que quieras jugar primero escribe:
+      cd ~/M7
+      source venv/bin/activate
+
+  Para comprobar que Pygame quedó instalado:
+      python3 -c "import pygame; print(pygame.version.ver)"
+  Debe mostrar un número de versión (por ejemplo 2.6.1).
+
+--------------------------------------------------------------
+4. CÓMO ABRIR EL JUEGO
+--------------------------------------------------------------
+  - Desde el menú de aplicaciones: busca "M7"
+    (si usaste ./instalar.sh).
+  - Desde la terminal:
+        cd ~/M7
+        ./jugar.sh
+    o también:
+        python3 mision7_gui.py
+
+  La primera vez el juego revisa la carpeta "sonidos" y, si falta
+  algún archivo, lo vuelve a crear (tarda unos 3 segundos).
+
+  Versión de respaldo sin interfaz gráfica (no necesita Pygame):
+        python3 mision7_terminal.py
+
+--------------------------------------------------------------
+5. CONTROLES
+--------------------------------------------------------------
+  Ratón ............ clic en botones, opciones y cartas
+  ↑ ↓ / ← → ........ moverte entre opciones
+  ENTER o ESPACIO .. elegir / continuar
+  Teclas 1 a 4 ..... atajo para elegir una opción
+  ESPACIO o clic ... leer el diálogo más rápido
+  ESC o P .......... pausar la partida
+  F11 .............. pantalla completa (o el botón de arriba a la derecha)
+  Botón de nota .... activar o silenciar la música
+
+  El volumen general se controla con el volumen de tu computadora.
+  La ventana se puede agrandar: el juego se ajusta solo.
+
+--------------------------------------------------------------
+6. ARCHIVOS DEL JUEGO
+--------------------------------------------------------------
+  mision7_gui.py ....... programa principal (interfaz gráfica)
+  contenido.py ......... misiones, preguntas, cartas e insignias
+  logica.py ............ reglas: puntaje, cartas, victoria, récords
+  graficos.py .......... dibujo de personajes, reloj de arena,
+                         botones e íconos
+  audio.py ............. creación de la música y los sonidos
+  sonidos/ ............. música y efectos (.wav) generados por audio.py
+  voz/ ................. aquí van tus grabaciones de voz (ver voz/LEEME_VOZ.txt)
+  mision7_terminal.py .. versión 3.0 de respaldo (terminal)
+  icono.png ............ ícono del juego
+  instalar.sh / jugar.sh scripts de instalación y de inicio
+  records_mision7.json . se crea solo al terminar la primera partida
+
+  Para agregar misiones o preguntas solo se edita contenido.py.
+
+  Voz del autor: en "Cómo jugar" cada página reproduce su
+  grabación (tecla R para repetir) y en "Mapa de misiones" suena
+  al pasar el cursor sobre cada misión. Los nombres de archivo y
+  los textos sugeridos están en voz/LEEME_VOZ.txt.
+
+--------------------------------------------------------------
+7. SOLUCIÓN DE PROBLEMAS
+--------------------------------------------------------------
+  "ModuleNotFoundError: No module named 'pygame'"
+     -> Pygame no está instalado: repite el paso 3.
+
+  "bash: ./instalar.sh: Permiso denegado"
+     -> Dale permiso de ejecución:  chmod +x instalar.sh jugar.sh
+
+  "error: externally-managed-environment" al usar pip
+     -> Es normal en Ubuntu: usa la opción B o la opción C.
+
+  No se escucha nada
+     -> Revisa el volumen de Ubuntu y que la música no esté
+        silenciada (botón de nota, arriba a la derecha).
+        Si no hay tarjeta de sonido, el juego funciona sin audio.
+
+  Los sonidos se dañaron o borraron
+     -> Bórralos y créalos de nuevo con:  python3 audio.py
+
+  La ventana se ve muy pequeña o muy grande
+     -> Agrándala con el ratón o presiona F11.
+
+  Una grabación de voz no suena
+     -> Revisa que el nombre sea exacto (por ejemplo mision_3.ogg,
+        en minúsculas y con guion bajo) y que el formato sea
+        .ogg, .wav o .mp3. Un .m4a se convierte con:
+        ffmpeg -i archivo.m4a mision_3.ogg
+        Cierra y vuelve a abrir el juego después de agregar audios.
+
+  Quiero borrar la tabla de récords
+     -> En el juego: Récords > botón "Limpiar registros" (o tecla
+        SUPR) y confirma con "Sí, borrar".
+     -> Desde la terminal: borra el archivo records_mision7.json.
+
+--------------------------------------------------------------
+8. ORIGEN DE LA MÚSICA, LOS SONIDOS Y LAS IMÁGENES
+--------------------------------------------------------------
+  - Música y efectos de sonido: originales, compuestos y
+    sintetizados con código en audio.py (ondas senoidales,
+    triangulares y ruido filtrado) usando solo la librería
+    estándar de Python. No se usó ningún audio de terceros.
+  - Personajes, íconos, cartas y reloj de arena: dibujados con
+    código en graficos.py usando las funciones de dibujo de
+    Pygame. No se usaron imágenes de terceros.
+  - Tipografía: DejaVu Sans (licencia libre), incluida en Ubuntu.
+  - Librería Pygame: licencia LGPL (https://www.pygame.org).
+==============================================================

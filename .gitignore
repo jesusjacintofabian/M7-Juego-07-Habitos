@@ -1,0 +1,14 @@
+# Récords de partidas (se crean al jugar)
+records_mision7.json
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+
+# Entorno virtual
+venv/
+.venv/
+
+# Sistema
+.DS_Store
+Thumbs.db
